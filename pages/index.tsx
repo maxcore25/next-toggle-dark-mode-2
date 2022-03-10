@@ -1,11 +1,20 @@
 import type { NextPage } from 'next'
+import { useTheme } from 'next-themes'
 import Head from 'next/head'
 import Image from 'next/image'
 
 const Home: NextPage = () => {
+  const { theme, setTheme } = useTheme()
+
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
-      <h1 className="text-4xl">Hello world</h1>
+      <h1 className="text-4xl">Current Theme Mode: {theme}</h1>
+      <button
+        className="mt-5 bg-black px-6 py-2 text-white dark:bg-white dark:text-black"
+        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      >
+        Toggle to {theme === 'light' ? 'dark' : 'light'}
+      </button>
     </div>
   )
 }
