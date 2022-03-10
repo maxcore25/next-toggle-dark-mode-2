@@ -2,9 +2,13 @@ import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 const Home: NextPage = () => {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
